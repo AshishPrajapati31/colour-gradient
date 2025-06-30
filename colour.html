@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GradientHub | Professional Color Gradients</title>
+    <style>
+      :root {
+        --primary: #6c5ce7;
+        --secondary: #a29bfe;
+        --accent: #00cec9;
+        --dark: #0f0f1a;
+        --darker: #0a0a12;
+        --darkest: #050509;
+        --light: #f5f6fa;
+        --text: #e2e2e2;
+        --text-light: #b8b8b8;
+        --text-lighter: #8c8c8c;
+        --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        --shadow-hover: 0 10px 20px rgba(0, 0, 0, 0.4);
+        --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        --card-bg: rgba(30, 30, 45, 0.6);
+        --card-border: rgba(255, 255, 255, 0.05);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+          sans-serif;
+      }
+
+      @supports (font-variation-settings: normal) {
+        * {
+          font-family: "Inter var", -apple-system, BlinkMacSystemFont,
+            "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+            "Helvetica Neue", sans-serif;
+        }
+      }
+
+      body {
+        background: var(--darkest);
+        color: var(--text);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        overflow-x: hidden;
+        min-height: 100vh;
+      }
+
+      header {
+        background: linear-gradient(135deg, var(--darkest), var(--dark));
+        color: white;
+        padding: 3rem 0 2.5rem;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        border-bottom: 1px solid rgba(108, 92, 231, 0.2);
+      }
+
+      header::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(
+          circle at 20% 50%,
+          rgba(108, 92, 231, 0.1) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+        font-weight: 700;
+        position: relative;
+        background: linear-gradient(to right, #a29bfe, #00cec9);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        text-shadow: 0 2px 10px rgba(162, 155, 254, 0.2);
+      }
+
+      .subtitle {
+        font-weight: 400;
+        opacity: 0.8;
+        max-width: 700px;
+        margin: 0 auto;
+        font-size: 1.1rem;
+        color: var(--text-light);
+      }
+
+      .search-container {
+        margin: 2rem auto;
+        max-width: 600px;
+        position: relative;
+      }
+
+      #search {
+        width: 100%;
+        padding: 1rem 1.5rem 1rem 3rem;
+        border: none;
+        border-radius: 50px;
+        font-size: 1rem;
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+        background-color: rgba(30, 30, 45, 0.8);
+        color: var(--text);
+        border: 1px solid var(--card-border);
+        backdrop-filter: blur(10px);
+      }
+
+      #search:focus {
+        outline: none;
+        box-shadow: 0 5px 15px rgba(108, 92, 231, 0.3);
+        background-color: rgba(40, 40, 60, 0.8);
+        border-color: rgba(108, 92, 231, 0.3);
+      }
+
+      .search-icon {
+        position: absolute;
+        left: 1.5rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--secondary);
+        pointer-events: none;
+      }
+
+      .filters {
+        display: flex;
+        justify-content: center;
+        gap: 0.8rem;
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
+        padding: 0.5rem 0;
+      }
+
+      .filter-btn {
+        padding: 0.6rem 1.2rem;
+        border: none;
+        background: rgba(30, 30, 45, 0.8);
+        border-radius: 50px;
+        cursor: pointer;
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: var(--text-light);
+        border: 1px solid var(--card-border);
+        backdrop-filter: blur(10px);
+      }
+
+      .filter-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 12px rgba(108, 92, 231, 0.2);
+        background: rgba(40, 40, 60, 0.8);
+        color: var(--text);
+      }
+
+      .filter-btn.active {
+        background: linear-gradient(135deg, var(--primary), var(--accent));
+        color: white;
+        box-shadow: 0 4px 8px rgba(108, 92, 231, 0.4);
+        border-color: transparent;
+      }
+
+      .gradient-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 3rem;
+        padding: 0.5rem 0;
+      }
+
+      .gradient-card {
+        background: var(--card-bg);
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+        position: relative;
+        will-change: transform;
+        backdrop-filter: blur(10px);
+        border: 1px solid var(--card-border);
+      }
+
+      .gradient-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-hover);
+        background: rgba(40, 40, 60, 0.8);
+        border-color: rgba(108, 92, 231, 0.2);
+      }
+
+      .gradient-preview {
+        height: 140px;
+        width: 100%;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .gradient-info {
+        padding: 1.2rem;
+      }
+
+      .gradient-name {
+        font-weight: 600;
+        margin-bottom: 0.8rem;
+        font-size: 1rem;
+        color: var(--text);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .gradient-codes {
+        display: flex;
+        justify-content: space-between;
+        gap: 0.5rem;
+        font-size: 0.85rem;
+        flex-wrap: wrap;
+      }
+
+      .color-code {
+        background: rgba(0, 0, 0, 0.2);
+        padding: 0.4rem 0.6rem;
+        border-radius: 6px;
+        font-family: "SF Mono", "Roboto Mono", monospace;
+        cursor: pointer;
+        transition: var(--transition);
+        color: var(--text);
+        flex: 1;
+        text-align: center;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        min-width: 80px;
+        margin-bottom: 0.3rem;
+        position: relative;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .color-code:hover {
+        background: rgba(108, 92, 231, 0.2);
+        color: var(--light);
+      }
+
+      .color-name {
+        display: block;
+        font-size: 0.7rem;
+        margin-top: 0.2rem;
+        color: var(--text-lighter);
+        font-family: "Inter", sans-serif;
+        font-weight: 500;
+      }
+
+      .copy-options {
+        position: absolute;
+        bottom: 1rem;
+        right: 1rem;
+        display: flex;
+        gap: 0.5rem;
+        opacity: 0;
+        transition: var(--transition);
+      }
+
+      .gradient-card:hover .copy-options {
+        opacity: 1;
+      }
+
+      .copy-btn {
+        background: rgba(15, 15, 25, 0.9);
+        color: white;
+        border: none;
+        border-radius: 4px;
+        padding: 0.4rem 0.8rem;
+        font-size: 0.75rem;
+        cursor: pointer;
+        transition: var(--transition);
+        backdrop-filter: blur(10px);
+        font-weight: 500;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .copy-btn:hover {
+        background: var(--primary);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 8px rgba(108, 92, 231, 0.3);
+      }
+
+      .copy-message {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        background: linear-gradient(135deg, var(--primary), var(--accent));
+        color: white;
+        padding: 0.8rem 1.5rem;
+        border-radius: 8px;
+        opacity: 0;
+        transition: var(--transition);
+        z-index: 100;
+        font-weight: 500;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        pointer-events: none;
+      }
+
+      .copy-message.show {
+        opacity: 1;
+        transform: translateY(-5px);
+      }
+
+      footer {
+        text-align: center;
+        padding: 2.5rem 0;
+        background: linear-gradient(135deg, var(--darkest), var(--dark));
+        color: white;
+        margin-top: 3rem;
+        border-top: 1px solid rgba(108, 92, 231, 0.2);
+      }
+
+      .footer-content {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .footer-links {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        margin-top: 1rem;
+      }
+
+      .footer-link {
+        color: var(--text-light);
+        text-decoration: none;
+        transition: color 0.2s;
+        font-size: 0.9rem;
+      }
+
+      .footer-link:hover {
+        color: var(--secondary);
+      }
+
+      /* Loading state */
+      .loading {
+        display: flex;
+        justify-content: center;
+        padding: 2rem;
+        grid-column: 1 / -1;
+        color: var(--text-light);
+      }
+
+      /* Scrollbar styling */
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: var(--dark);
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: var(--primary);
+        border-radius: 4px;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: var(--secondary);
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 1024px) {
+        .gradient-grid {
+          grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        }
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          padding: 0 1.5rem;
+        }
+
+        h1 {
+          font-size: 2rem;
+        }
+
+        .subtitle {
+          font-size: 1rem;
+        }
+
+        .gradient-grid {
+          grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+          gap: 1.2rem;
+        }
+
+        .gradient-preview {
+          height: 120px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        header {
+          padding: 2rem 0;
+        }
+
+        .container {
+          padding: 0 1rem;
+        }
+
+        .gradient-grid {
+          grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+          gap: 1rem;
+        }
+
+        .gradient-info {
+          padding: 1rem;
+        }
+
+        .gradient-name {
+          font-size: 0.9rem;
+          margin-bottom: 0.6rem;
+        }
+
+        .color-code {
+          font-size: 0.75rem;
+          padding: 0.3rem 0.4rem;
+        }
+
+        .filters {
+          gap: 0.5rem;
+        }
+
+        .filter-btn {
+          padding: 0.5rem 1rem;
+          font-size: 0.8rem;
+        }
+      }
+    </style>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <h1>GradientHub</h1>
+        <p class="subtitle">
+          Discover 1000+ professionally crafted color gradients with color names
+          for your next design project
+        </p>
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="search-container">
+        <span class="search-icon">🔍</span>
+        <input
+          type="text"
+          id="search"
+          placeholder="Search gradients (e.g., 'sunset', '#FF512F', 'vibrant')"
+        />
+      </div>
+
+      <div class="filters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="warm">Warm</button>
+        <button class="filter-btn" data-filter="cool">Cool</button>
+        <button class="filter-btn" data-filter="pastel">Pastel</button>
+        <button class="filter-btn" data-filter="vibrant">Vibrant</button>
+        <button class="filter-btn" data-filter="dark">Dark</button>
+      </div>
+
+      <div class="gradient-grid" id="gradientContainer">
+        <div class="loading">Loading beautiful gradients...</div>
+      </div>
+    </div>
+
+    <div class="copy-message" id="copyMessage">Copied to clipboard!</div>
+
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <p>&copy; 2023 GradientHub | Professional Color Gradients</p>
+          <div class="footer-links">
+            <a href="#" class="footer-link">About</a>
+            <a href="#" class="footer-link">API</a>
+            <a href="#" class="footer-link">Contact</a>
+            <a href="#" class="footer-link">Privacy</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Color names database
+      const colorNames = {
+        // Reds
+        "#FF0000": "Pure Red",
+        "#FF5733": "Red Orange",
+        "#C70039": "Crimson Red",
+        "#900C3F": "Wine Red",
+        "#FF6B6B": "Light Coral",
+        "#FF0000": "Bright Red",
+        "#B22222": "Fire Brick",
+        "#8B0000": "Dark Red",
+
+        // Oranges
+        "#FFA500": "Pure Orange",
+        "#FF8C00": "Dark Orange",
+        "#FF7F50": "Coral",
+        "#FF6347": "Tomato",
+        "#FF4500": "Orange Red",
+        "#E67E22": "Carrot Orange",
+        "#D35400": "Pumpkin Orange",
+
+        // Yellows
+        "#FFFF00": "Pure Yellow",
+        "#FFD700": "Gold",
+        "#F1C40F": "Sunflower",
+        "#FFC300": "Lemon Yellow",
+        "#F39C12": "Orange Yellow",
+        "#FFD700": "Golden Yellow",
+        "#F4D03F": "Sand Yellow",
+
+        // Greens
+        "#00FF00": "Pure Green",
+        "#2ECC71": "Emerald",
+        "#27AE60": "Nephritis",
+        "#16A085": "Green Sea",
+        "#1ABC9C": "Turquoise",
+        "#00FF7F": "Spring Green",
+        "#2E8B57": "Sea Green",
+        "#228B22": "Forest Green",
+
+        // Blues
+        "#0000FF": "Pure Blue",
+        "#3498DB": "Sky Blue",
+        "#2980B9": "Deep Sky Blue",
+        "#1E90FF": "Dodger Blue",
+        "#4169E1": "Royal Blue",
+        "#000080": "Navy Blue",
+        "#00008B": "Dark Blue",
+        "#4682B4": "Steel Blue",
+
+        // Purples
+        "#800080": "Pure Purple",
+        "#9B59B6": "Amethyst",
+        "#8E44AD": "Wisteria",
+        "#6A5ACD": "Slate Blue",
+        "#7B68EE": "Medium Slate Blue",
+        "#9932CC": "Dark Orchid",
+        "#8A2BE2": "Blue Violet",
+        "#9370DB": "Medium Purple",
+
+        // Pinks
+        "#FFC0CB": "Pink",
+        "#FF69B4": "Hot Pink",
+        "#FF1493": "Deep Pink",
+        "#DB7093": "Pale Violet Red",
+        "#C71585": "Medium Violet Red",
+        "#FF00FF": "Magenta",
+        "#EE82EE": "Violet",
+        "#DA70D6": "Orchid",
+
+        // Browns
+        "#A52A2A": "Brown",
+        "#8B4513": "Saddle Brown",
+        "#D2691E": "Chocolate",
+        "#CD853F": "Peru",
+        "#F4A460": "Sandy Brown",
+        "#DEB887": "Burly Wood",
+        "#D2B48C": "Tan",
+        "#BC8F8F": "Rosy Brown",
+
+        // Grays
+        "#808080": "Gray",
+        "#708090": "Slate Gray",
+        "#778899": "Light Slate Gray",
+        "#2F4F4F": "Dark Slate Gray",
+        "#696969": "Dim Gray",
+        "#A9A9A9": "Dark Gray",
+        "#C0C0C0": "Silver",
+        "#D3D3D3": "Light Gray",
+
+        // Pastels
+        "#FFD1DC": "Pastel Pink",
+        "#FFECB8": "Pastel Yellow",
+        "#B5EAD7": "Pastel Green",
+        "#C7CEEA": "Pastel Blue",
+        "#E2F0CB": "Pastel Mint",
+        "#FFDAC1": "Pastel Orange",
+        "#F8B195": "Pastel Peach",
+        "#F67280": "Pastel Coral",
+
+        // Dark colors
+        "#000000": "Black",
+        "#1A1A1A": "Dark Charcoal",
+        "#2C3E50": "Midnight Blue",
+        "#34495E": "Wet Asphalt",
+        "#2D3436": "Dracula Orchid",
+        "#1E272E": "Dark Gunmetal",
+        "#0F0F0F": "Rich Black",
+        "#1B1B1B": "Eerie Black",
+      };
+
+      // ===== Generate 1000+ Unique Gradients =====
+      function generateGradients() {
+        const gradients = [];
+        const categories = ["warm", "cool", "pastel", "vibrant", "dark"];
+        const names = [
+          "Cosmic Sunset",
+          "Neon Dreams",
+          "Midnight Ocean",
+          "Electric Violet",
+          "Cyber Punk",
+          "Synthwave",
+          "Dark Matter",
+          "Lunar Eclipse",
+          "Deep Space",
+          "Nebula Glow",
+          "Phantom Purple",
+          "Cyber Teal",
+          "Retro Vibes",
+          "Matrix Green",
+          "Obsidian Black",
+          "Plasma Pink",
+          "Holographic",
+          "Galactic Core",
+          "Quantum Blue",
+          "Neon Noir",
+        ];
+        const modifiers = [
+          "Radiance",
+          "Horizon",
+          "Bliss",
+          "Essence",
+          "Vibe",
+          "Aura",
+          "Mood",
+          "Whisper",
+          "Gleam",
+          "Shimmer",
+          "Glow",
+          "Flare",
+          "Haze",
+          "Mirage",
+          "Infinity",
+          "Nebula",
+          "Cosmos",
+          "Stellar",
+          "Luster",
+          "Prism",
+        ];
+
+        // Generate 1000+ gradients
+        for (let i = 0; i < 1000; i++) {
+          const category =
+            categories[Math.floor(Math.random() * categories.length)];
+          const name = `${names[Math.floor(Math.random() * names.length)]} ${
+            modifiers[Math.floor(Math.random() * modifiers.length)]
+          }`;
+
+          // Generate random colors based on category
+          const colors = [];
+          const colorCount = Math.random() > 0.8 ? 3 : 2;
+
+          for (let j = 0; j < colorCount; j++) {
+            colors.push(getRandomColor(category));
+          }
+
+          gradients.push({
+            id: `gradient-${i}`,
+            name: name,
+            colors: colors,
+            category: category,
+          });
+        }
+
+        return gradients;
+      }
+
+      // ===== Generate Random Colors Based on Category =====
+      function getRandomColor(category) {
+        let h, s, l;
+
+        switch (category) {
+          case "warm":
+            h = Math.floor(Math.random() * 60); // Reds, Oranges, Yellows
+            s = Math.floor(Math.random() * 40) + 60;
+            l = Math.floor(Math.random() * 30) + 50;
+            break;
+          case "cool":
+            h = Math.floor(Math.random() * 180) + 180; // Greens, Blues, Purples
+            s = Math.floor(Math.random() * 40) + 50;
+            l = Math.floor(Math.random() * 30) + 50;
+            break;
+          case "pastel":
+            h = Math.floor(Math.random() * 360);
+            s = Math.floor(Math.random() * 30) + 30;
+            l = Math.floor(Math.random() * 30) + 70;
+            break;
+          case "vibrant":
+            h = Math.floor(Math.random() * 360);
+            s = Math.floor(Math.random() * 30) + 70;
+            l = Math.floor(Math.random() * 30) + 50;
+            break;
+          case "dark":
+            h = Math.floor(Math.random() * 360);
+            s = Math.floor(Math.random() * 40) + 40;
+            l = Math.floor(Math.random() * 30) + 10;
+            break;
+          default:
+            h = Math.floor(Math.random() * 360);
+            s = Math.floor(Math.random() * 70) + 30;
+            l = Math.floor(Math.random() * 60) + 20;
+        }
+
+        return hslToHex(h, s, l);
+      }
+
+      // ===== HSL to Hex Conversion =====
+      function hslToHex(h, s, l) {
+        h /= 360;
+        s /= 100;
+        l /= 100;
+
+        let r, g, b;
+        if (s === 0) {
+          r = g = b = l;
+        } else {
+          const hue2rgb = (p, q, t) => {
+            if (t < 0) t += 1;
+            if (t > 1) t -= 1;
+            if (t < 1 / 6) return p + (q - p) * 6 * t;
+            if (t < 1 / 2) return q;
+            if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6;
+            return p;
+          };
+          const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+          const p = 2 * l - q;
+          r = hue2rgb(p, q, h + 1 / 3);
+          g = hue2rgb(p, q, h);
+          b = hue2rgb(p, q, h - 1 / 3);
+        }
+
+        const toHex = (x) => {
+          const hex = Math.round(x * 255).toString(16);
+          return hex.length === 1 ? "0" + hex : hex;
+        };
+
+        return `#${toHex(r)}${toHex(g)}${toHex(b)}`.toUpperCase();
+      }
+
+      // ===== Get closest named color =====
+      function getColorName(hex) {
+        // Check if we have an exact match
+        if (colorNames[hex]) {
+          return colorNames[hex];
+        }
+
+        // If no exact match, find the closest named color
+        let closestColor = "";
+        let minDistance = Infinity;
+
+        // Convert hex to RGB
+        const r = parseInt(hex.substring(1, 3), 16);
+        const g = parseInt(hex.substring(3, 5), 16);
+        const b = parseInt(hex.substring(5, 7), 16);
+
+        // Compare with all named colors
+        for (const namedHex in colorNames) {
+          const nr = parseInt(namedHex.substring(1, 3), 16);
+          const ng = parseInt(namedHex.substring(3, 5), 16);
+          const nb = parseInt(namedHex.substring(5, 7), 16);
+
+          // Calculate color distance (simple Euclidean distance)
+          const distance = Math.sqrt(
+            Math.pow(r - nr, 2) + Math.pow(g - ng, 2) + Math.pow(b - nb, 2)
+          );
+
+          if (distance < minDistance) {
+            minDistance = distance;
+            closestColor = colorNames[namedHex];
+          }
+        }
+
+        return closestColor || "Custom Color";
+      }
+
+      // ===== Display Gradients =====
+      function displayGradients(gradients) {
+        const container = document.getElementById("gradientContainer");
+
+        // Show loading state briefly for better perceived performance
+        setTimeout(() => {
+          container.innerHTML = "";
+
+          if (gradients.length === 0) {
+            container.innerHTML =
+              '<div class="loading">No gradients found matching your search</div>';
+            return;
+          }
+
+          gradients.forEach((gradient) => {
+            const gradientCard = document.createElement("div");
+            gradientCard.className = "gradient-card";
+            gradientCard.setAttribute("data-category", gradient.category);
+            gradientCard.setAttribute("data-id", gradient.id);
+
+            const gradientStyle =
+              gradient.colors.length > 2
+                ? `linear-gradient(135deg, ${gradient.colors.join(", ")})`
+                : `linear-gradient(135deg, ${gradient.colors[0]}, ${gradient.colors[1]})`;
+
+            gradientCard.innerHTML = `
+                        <div class="gradient-preview" style="background: ${gradientStyle}">
+                            <div class="copy-options">
+                                <button class="copy-btn" data-gradient="${gradientStyle}">Copy CSS</button>
+                                <button class="copy-btn" data-colors="${gradient.colors.join(
+                                  ","
+                                )}">Copy Colors</button>
+                            </div>
+                        </div>
+                        <div class="gradient-info">
+                            <div class="gradient-name" title="${
+                              gradient.name
+                            }">${gradient.name}</div>
+                            <div class="gradient-codes">
+                                ${gradient.colors
+                                  .map(
+                                    (color) => `
+                                    <span class="color-code" title="${color}">
+                                      ${color}
+                                      <span class="color-name">${getColorName(
+                                        color
+                                      )}</span>
+                                    </span>
+                                `
+                                  )
+                                  .join("")}
+                            </div>
+                        </div>
+                    `;
+
+            container.appendChild(gradientCard);
+          });
+
+          // Attach event listeners after DOM is created
+          attachEventListeners();
+        }, 300);
+      }
+
+      // ===== Filter Gradients =====
+      function filterGradients(category) {
+        if (category === "all") {
+          displayGradients(allGradients);
+        } else {
+          const filtered = allGradients.filter((g) => g.category === category);
+          displayGradients(filtered);
+        }
+      }
+
+      // ===== Search Gradients =====
+      function searchGradients(term) {
+        term = term.toLowerCase().trim();
+
+        if (term === "") {
+          filterGradients(activeFilter);
+          return;
+        }
+
+        const results = allGradients.filter(
+          (g) =>
+            g.name.toLowerCase().includes(term) ||
+            g.colors.some((c) => c.toLowerCase().includes(term)) ||
+            g.category.toLowerCase().includes(term) ||
+            g.colors.some((c) => getColorName(c).toLowerCase().includes(term))
+        );
+
+        displayGradients(results);
+      }
+
+      // ===== Copy Functions =====
+      function copyToClipboard(text) {
+        navigator.clipboard
+          .writeText(text)
+          .then(() => {
+            showCopyMessage();
+          })
+          .catch((err) => {
+            console.error("Failed to copy: ", err);
+          });
+      }
+
+      function showCopyMessage(message = "Copied to clipboard!") {
+        const copyMessage = document.getElementById("copyMessage");
+        copyMessage.textContent = message;
+        copyMessage.classList.add("show");
+
+        setTimeout(() => {
+          copyMessage.classList.remove("show");
+        }, 2000);
+      }
+
+      // ===== Attach Event Listeners =====
+      function attachEventListeners() {
+        // Color code click
+        document.querySelectorAll(".color-code").forEach((el) => {
+          el.addEventListener("click", (e) => {
+            copyToClipboard(e.target.textContent);
+          });
+        });
+
+        // Copy buttons
+        document.querySelectorAll(".copy-btn[data-gradient]").forEach((btn) => {
+          btn.addEventListener("click", (e) => {
+            copyToClipboard(`background: ${e.target.dataset.gradient};`);
+          });
+        });
+
+        document.querySelectorAll(".copy-btn[data-colors]").forEach((btn) => {
+          btn.addEventListener("click", (e) => {
+            const colors = e.target.dataset.colors.split(",");
+            const colorInfo = colors
+              .map((c) => `${c} (${getColorName(c)})`)
+              .join(", ");
+            copyToClipboard(colorInfo);
+          });
+        });
+
+        // Gradient preview click (copy CSS)
+        document.querySelectorAll(".gradient-preview").forEach((el) => {
+          el.addEventListener("click", (e) => {
+            if (e.target === el) {
+              // Only if clicking on the preview itself, not buttons
+              const gradient = window.getComputedStyle(el).backgroundImage;
+              copyToClipboard(`background: ${gradient};`);
+            }
+          });
+        });
+      }
+
+      // ===== Initialize =====
+      const allGradients = generateGradients();
+      let activeFilter = "all";
+
+      // Initial display
+      displayGradients(allGradients);
+
+      // Filter button events
+      document.querySelectorAll(".filter-btn").forEach((button) => {
+        button.addEventListener("click", () => {
+          document
+            .querySelectorAll(".filter-btn")
+            .forEach((btn) => btn.classList.remove("active"));
+          button.classList.add("active");
+          activeFilter = button.dataset.filter;
+          filterGradients(activeFilter);
+        });
+      });
+
+      // Search input event
+      const searchInput = document.getElementById("search");
+      let searchTimeout;
+
+      searchInput.addEventListener("input", (e) => {
+        clearTimeout(searchTimeout);
+        searchTimeout = setTimeout(() => {
+          searchGradients(e.target.value);
+        }, 300);
+      });
+
+      // Make sure the search is cleared when the filter changes
+      document.querySelectorAll(".filter-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          searchInput.value = "";
+        });
+      });
+    </script>
+  </body>
+</html>
